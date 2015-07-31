@@ -12,4 +12,5 @@
   * Not using controllerAs syntax
   * not using preferred array syntax for dependency injection (to avoid minify issues)
   * make use of available angular directives - e.g. checkboxes
+  * duplicating common issues
   * make use of filters where appropriate
