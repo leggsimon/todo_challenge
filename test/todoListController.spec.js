@@ -8,6 +8,8 @@ describe('ToDoListController', function() {
   }));
 
   it('initialises with empty task list', function () {
-    expect(ctrl.taskList).toBeUndefined();
+    expect(ctrl.taskList).toEqual({ 'tasks': [] });
   });
+
+
 });
