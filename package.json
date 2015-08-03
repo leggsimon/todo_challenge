@@ -4,7 +4,8 @@
   "description": "* Deadline: submit completed pull request by 9am on Monday * You may use whatever level of JavaScript you feel comfortable with - pure JS, jQuery, Angular, or whatever weird and wonderful framework you want to try. Extra points for DogeScript",
   "main": "index.js",
   "scripts": {
-    "test": "karma start test/karma.conf.js",
+    "test": "node node_modules/karma/bin/karma start test/karma.conf.js",
+    "test-single-run": "node node_modules/karma/bin/karma start test/karma.conf.js --single-run",
     "postinstall": "bower cache clean && bower install"
   },
   "repository": {
