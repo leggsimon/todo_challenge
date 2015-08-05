@@ -2,8 +2,9 @@
   background-color: #8c8c8c;
   padding: 1em
 }
-
-
 .tasks {
   padding-top: 10em
+}
+.completedTableColumn {
+  width: 5em
 }

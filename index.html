@@ -28,14 +28,32 @@
     </nav>
 
     <div class="container tasks">
-      <ul class="list-group" ng-repeat='task in listCtrl.taskList.tasks'>
-        <li>
-          <div class="inline">
-            <input type="checkbox" name="checkbox" ng-model="task.completed">
-            <div id="editTaskField" editable-text="task.description">{{ task.description || "empty" }}</div>
-          </div>
-        </li>
-      </ul>
+
+      <div class="btn-group btn-group-justified" role="group" aria-label="Justified button group with nested dropdown">
+        <a href="#" class="btn btn-default" role="button">Active</a>
+        <a href="#" class="btn btn-default" role="button">Completed</a>
+        <a href="#" class="btn btn-default" role="button">All</a>
+        <div class="btn-group" role="group">
+          <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            Sort by <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Date due</a></li>
+            <li><a href="#">Importance</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <table class="list-group table table-bordered table-hover">
+        <tr>
+          <th class="completedTableColumn">Completed</th>
+          <th class="taskTableColumn">Task</th>
+        </tr>
+        <tr ng-repeat='task in listCtrl.taskList.tasks'>
+            <td><input type="checkbox" name="checkbox" ng-model="task.completed"></td>
+            <td><div id="editTaskField" editable-text="task.description">{{ task.description || "empty" }}</div></td>
+        </tr>
+      </table>
     </div>
 
   </body>
