@@ -7,6 +7,8 @@
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <link href="bower_components/angular-xeditable/dist/css/xeditable.css" rel="stylesheet">
+    <script src="bower_components/angular-xeditable/dist/js/xeditable.js"></script>
     <script src="js/app.js"></script>
     <script src="js/toDoListController.js"></script>
     <link rel="stylesheet" type="text/css" href="css/main.css">
@@ -17,22 +19,21 @@
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
         <h3>ToDo List</h3>
-        <div class="form-inline">
+        <form ng-submit="listCtrl.addNewTask()" class="form-inline">
           <label for="task"></label>
           <input type="text" ng-model="listCtrl.taskDescription" class="form-control" placeholder="Add a list item" style="width:200px" autofocus>
-          <button id="submitTask" class="btn btn-default" ng-click="listCtrl.addNewTask()">Add Task</button>
-        </div>
+          <input class="btn btn-default" type="submit" value="Add Task">
+        </form>
       </div>
     </nav>
 
     <div class="container tasks">
       <ul class="list-group" ng-repeat='task in listCtrl.taskList.tasks'>
         <li>
-          <p>
-            <h3>{{task.description}}</h3>
+          <div class="inline">
             <input type="checkbox" name="checkbox" ng-model="task.completed">
-          </p>
-          <p>Completed: {{task.completed}}</p>
+            <div id="editTaskField" editable-text="task.description">{{ task.description || "empty" }}</div>
+          </div>
         </li>
       </ul>
     </div>

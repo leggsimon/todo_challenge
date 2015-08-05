@@ -20,4 +20,13 @@ describe('ToDo List', function () {
     addTaskButton.click();
     expect(completeTaskCheck.isSelected()).toBe(false);
   });
+
+  it('can edit the name of a task', function () {
+    addTaskField.sendKeys('Complete challenge');
+    addTaskButton.click();
+    element(by.id('editTaskField')).click();
+    element(by.class('editable-has-buttons')).sendKeys('Add edit button');
+    element(by.type('submit')).click();
+    expect(tasks.get(0).getText()).toContain('Add edit button');
+  });
 });

@@ -1,1 +1,1 @@
-var todoListManager = angular.module('ToDoList', ['ngResource']);
+var todoListManager = angular.module('ToDoList', ['ngResource', 'xeditable']);
