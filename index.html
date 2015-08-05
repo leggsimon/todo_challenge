@@ -9,22 +9,33 @@
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="js/app.js"></script>
     <script src="js/toDoListController.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
   </head>
 
   <body ng-controller="ToDoListController as listCtrl">
-    <h3>ToDo List</h3>
 
-    <div class="form-inline">
-      <label for="task"></label>
-      <input type="text" ng-model="listCtrl.taskDescription" class="form-control" placeholder="Add a list item" style="width:200px" autofocus>
-      <button id="submitTask" class="btn btn-default" ng-click="listCtrl.addNewTask()">Add Task</button>
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="container">
+        <h3>ToDo List</h3>
+        <div class="form-inline">
+          <label for="task"></label>
+          <input type="text" ng-model="listCtrl.taskDescription" class="form-control" placeholder="Add a list item" style="width:200px" autofocus>
+          <button id="submitTask" class="btn btn-default" ng-click="listCtrl.addNewTask()">Add Task</button>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container tasks">
+      <ul class="list-group" ng-repeat='task in listCtrl.taskList.tasks'>
+        <li>
+          <p>
+            <h3>{{task.description}}</h3>
+            <input type="checkbox" name="checkbox" ng-model="task.completed">
+          </p>
+          <p>Completed: {{task.completed}}</p>
+        </li>
+      </ul>
     </div>
-
-    <ul class="list-group" ng-repeat='task in listCtrl.taskList.tasks'>
-      <li>
-        Task: {{task.description}}, Completed: {{task.completed}}
-      </li>
-    </ul>
 
   </body>
 </html>
