@@ -2,9 +2,9 @@ describe('ToDo List', function () {
 
   var addTaskField      = element(by.model("listCtrl.taskDescription"));
   var addTaskButton     = element(by.id('submitTask'));
-  var completeTaskCheck = element(by.css('.completeTaskCheck'));
+  var completeTaskCheck = element(by.css('.completeTaskCheckbox'));
   var editTaskField     =  element(by.model('$data'));
-  var editTaskButton    = element(by.css('.editable-buttons button'));
+  var editTaskButton    = element(by.css('.editable-buttons button:first-child'));
   var tasks = element.all(by.repeater('task in listCtrl.taskList.tasks'));
 
   beforeEach(function() {
@@ -23,12 +23,12 @@ describe('ToDo List', function () {
     expect(completeTaskCheck.isSelected()).toBe(false);
   });
 
-  it('can mark a task as completed', function () {
-    addTaskField.sendKeys('Buy a dog');
-    addTaskButton.click();
-    completeTaskCheck.click();
-    expect(completeTaskCheck.isSelected()).toBe(true);
-  });
+  // it('can mark a task as completed', function () {
+  //   addTaskField.sendKeys('Buy a dog');
+  //   addTaskButton.click();
+  //   completeTaskCheck.click();
+  //   expect(completeTaskCheck.isSelected()).toBe(true);
+  // });
 
   it('can edit the name of a task', function () {
     addTaskField.sendKeys('Feed the cat');
@@ -38,5 +38,15 @@ describe('ToDo List', function () {
     editTaskField.sendKeys('Feed the dog');
     editTaskButton.click();
     expect(tasks.get(0).getText()).toBe('Feed the dog');
+  });
+
+  describe('when displaying tasks', function () {
+
+    it('defaults to showing all active tasks', function () {
+      addTaskField.sendKeys('Feed the cat');
+      addTaskButton.click();
+      completeTaskCheck.click();
+      expect(tasks.count()).toBe(0);
+    });
   });
 });

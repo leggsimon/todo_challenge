@@ -49,8 +49,8 @@
           <th class="completedTableColumn">Completed</th>
           <th class="taskTableColumn">Task</th>
         </tr>
-        <tr ng-repeat='task in listCtrl.taskList.tasks' role="checkbox" ng-model="task.completed">
-            <td><input class="completeTaskCheck" type="checkbox" name="checkbox" ng-model="task.completed"></td>
+        <tr ng-repeat='task in listCtrl.taskList.tasks | filter:task.completed=false' role="checkbox" ng-model="task.completed">
+            <td><input class="completeTaskCheckbox" type="checkbox" name="checkbox" ng-model="task.completed"></td>
             <td><div id="editTaskField" editable-text="task.description">{{ task.description || "empty" }}</div></td>
         </tr>
       </table>
