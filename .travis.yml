@@ -1,6 +1,5 @@
 script:
   - npm test --single-run
-  - node_modules/.bin/protractor e2e/conf.js --browser=firefox
 language: node_js
 node_js:
   - "0.10"
