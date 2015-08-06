@@ -1,10 +1,23 @@
-.navbar {
-  background-color: #8c8c8c;
-  padding: 1em
+body {
+  background-color: #fffafa;
 }
+
+.logo {
+  font-size: 3em;
+}
+
+.navbar {
+  background-color: rgb(221, 249, 244);
+  padding: 1em;
+}
+
 .tasks {
-  padding-top: 10em
+  padding-top: 10em;
 }
 .completedTableColumn {
-  width: 5em
+  width: 5em;
+}
+
+th {
+  background-color: #ffffff;
 }

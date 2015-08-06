@@ -18,11 +18,11 @@
 
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
-        <h3>ToDo List</h3>
+        <div class="logo">ToDo List</div>
         <form ng-submit="listCtrl.addNewTask()" class="form-inline">
           <label for="task"></label>
           <input type="text" ng-model="listCtrl.taskDescription" class="form-control" placeholder="Add a list item" style="width:200px" autofocus>
-          <input class="btn btn-default" type="submit" value="Add Task">
+          <input id="submitTask" class="btn btn-default" type="submit" value="Add Task">
         </form>
       </div>
     </nav>
@@ -49,8 +49,8 @@
           <th class="completedTableColumn">Completed</th>
           <th class="taskTableColumn">Task</th>
         </tr>
-        <tr ng-repeat='task in listCtrl.taskList.tasks'>
-            <td><input type="checkbox" name="checkbox" ng-model="task.completed"></td>
+        <tr ng-repeat='task in listCtrl.taskList.tasks' role="checkbox" ng-model="task.completed">
+            <td><input class="completeTaskCheck" type="checkbox" name="checkbox" ng-model="task.completed"></td>
             <td><div id="editTaskField" editable-text="task.description">{{ task.description || "empty" }}</div></td>
         </tr>
       </table>
