@@ -10,8 +10,8 @@
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <link href="bower_components/angular-xeditable/dist/css/xeditable.css" rel="stylesheet">
     <script src="bower_components/angular-xeditable/dist/js/xeditable.js"></script>
-    <script src="/app/public/js/app.js"></script>
-    <script src="/app/public/js/toDoListController.js"></script>
+    <script src="app/public/js/app.js"></script>
+    <script src="app/public/js/toDoListController.js"></script>
     <link rel="stylesheet" type="text/css" href="app/public/css/main.css">
   </head>
 
@@ -45,8 +45,16 @@
         </div>
       </div>
 
-      <div ng-view>
-      </div>
+      <table class="list-group table table-bordered table-hover">
+        <tr>
+          <th class="completedTableColumn">Completed</th>
+          <th class="taskTableColumn">Task</th>
+        </tr>
+          <tr ng-repeat="task in listCtrl.taskList.tasks | filter:task.completed=false" role="checkbox" ng-model="task.completed">
+              <td><input class="completeTaskCheckbox" type="checkbox" name="checkbox" ng-model="task.completed"></td>
+              <td><div id="editTaskField" editable-text="task.description">{{ task.description || "empty" }}</div></td>
+          </tr>
+      </table>
 
     </div>
 
