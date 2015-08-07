@@ -30,27 +30,20 @@
 
     <div class="container tasks">
 
-      <div class="btn-group btn-group-justified" role="group" aria-label="Justified button group with nested dropdown">
-        <a href="#/active_tasks" class="btn btn-default" role="button">Active</a>
-        <a href="#/completed_tasks" class="btn btn-default" role="button">Completed</a>
-        <a href="#/all_tasks" class="btn btn-default" role="button">All</a>
-        <div class="btn-group" role="group">
-          <a href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-            Sort by <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Date due</a></li>
-            <li><a href="#">Importance</a></li>
-          </ul>
-        </div>
-      </div>
+      <section ng-init="tab = false">
+        <ul class="nav nav-pills">
+          <li> <a href ng-click="tab = false">Active</a> </li>
+          <li> <a href ng-click="tab = true">Completed</a> </li>
+          <li> <a href ng-click="tab = '' ">All</a> </li>
+        </ul>
+      </section>
 
       <table class="list-group table table-bordered table-hover">
         <tr>
           <th class="completedTableColumn">Completed</th>
           <th class="taskTableColumn">Task</th>
         </tr>
-          <tr ng-repeat="task in listCtrl.taskList.tasks | filter:task.completed=false" role="checkbox" ng-model="task.completed">
+          <tr ng-repeat="task in listCtrl.taskList.tasks | filter:task.completed= tab" role="checkbox" ng-model="task.completed">
               <td><input class="completeTaskCheckbox" type="checkbox" name="checkbox" ng-model="task.completed"></td>
               <td><div id="editTaskField" editable-text="task.description">{{ task.description || "empty" }}</div></td>
           </tr>
